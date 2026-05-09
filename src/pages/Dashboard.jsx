@@ -110,7 +110,7 @@ export default function Dashboard() {
             </button>
             <div className="topbar-title-wrap">
               <p className="topbar-eyebrow">Zyntra Control Surface</p>
-              <h1 style={{ margin: 0 }}>{pageTitleMap[activePage] || 'Zenith Dashboard'}</h1>
+              <h1 style={{ margin: 0 }}>{pageTitleMap[activePage] || 'Zyntra Dashboard'}</h1>
             </div>
           </div>
           <div className="topbar-actions">
