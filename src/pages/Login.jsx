@@ -51,6 +51,7 @@ export default function Login() {
             Z
           </span>
         </div>
+
         <h2 className="brand-text-glow" style={{ margin: 0, paddingBottom: '5px' }}>zyntra</h2>
         <p>Premium Guild Management & Automation</p>
         
@@ -59,15 +60,36 @@ export default function Login() {
             <i className="fa-brands fa-discord"></i> Login to zyntra with Discord
           </a>
         ) : (
-          <div id="login-status">
+          <div id="login-status" style={{ marginTop: '15px' }}>
+            
+            {/* Animation de chargement */}
+            <div style={{
+              width: '28px',
+              height: '28px',
+              borderRadius: '50%',
+              border: '3px solid rgba(255,255,255,0.2)',
+              borderTopColor: status.type === 'success' ? '#4ADE80' : 'red',
+              animation: 'spin 0.8s linear infinite',
+              margin: '0 auto 10px auto'
+            }}></div>
+
             <span style={{ color: status.type === 'success' ? '#4ADE80' : 'red' }}>
-              {status.type === 'error' && <i className="fa-solid fa-circle-exclamation" style={{ marginRight: '8px' }}></i>}
+              {status.type === 'error' && (
+                <i className="fa-solid fa-circle-exclamation" style={{ marginRight: '8px' }}></i>
+              )}
               {status.text}
             </span>
           </div>
         )}
       </div>
+
+      {/* Animation CSS */}
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 }
-
