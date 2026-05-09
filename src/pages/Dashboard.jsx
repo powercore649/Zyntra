@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
+
 import Overview from './Overview';
 import Moderation from './Moderation';
 import AutoMod from './AutoMod';
 import Commands from './Commands';
 import Docs from './Docs';
-import Changelog from './Changelog'; // <-- ajouté
+import Changelog from './Changelog';
 
 export default function Dashboard() {
   const [activePage, setActivePage] = useState('overview');
@@ -26,7 +27,7 @@ export default function Dashboard() {
         {activePage === 'automod' && <AutoMod />}
         {activePage === 'commands' && <Commands />}
         {activePage === 'docs' && <Docs />}
-        {activePage === 'changelog' && <Changelog />} {/* <-- ajouté */}
+        {activePage === 'changelog' && <Changelog />} 
       </div>
     </div>
   );
