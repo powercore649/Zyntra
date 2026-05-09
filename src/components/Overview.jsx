@@ -2,14 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 
 const ACTION_COLORS = {
-  WARN: { color: '#ffbb33', bg: 'rgba(255, 187, 51, 0.15)' },
-  BAN: { color: '#ff4444', bg: 'rgba(255, 68, 68, 0.15)' },
-  MUTE: { color: '#ff66b2', bg: 'rgba(255, 102, 178, 0.15)' },
-  KICK: { color: '#ff8800', bg: 'rgba(255, 136, 0, 0.15)' },
-  UNMUTE: { color: '#00C851', bg: 'rgba(0, 200, 81, 0.15)' },
-  UNBAN: { color: '#33b5e5', bg: 'rgba(51, 181, 229, 0.15)' },
-  PURGE: { color: '#aa66cc', bg: 'rgba(170, 102, 204, 0.15)' },
-  MASSBAN: { color: '#cc0000', bg: 'rgba(204, 0, 0, 0.15)' }
+  INFO:   { color: '#33b5e5', bg: 'rgba(51, 181, 229, 0.15)' },
+SUCCESS:{ color: '#00C851', bg: 'rgba(0, 200, 81, 0.15)' },
+ERROR:  { color: '#ff4444', bg: 'rgba(255, 68, 68, 0.15)' },
+ALERT:  { color: '#ffbb33', bg: 'rgba(255, 187, 51, 0.15)' },
+NEUTRAL:{ color: '#888888', bg: 'rgba(136, 136, 136, 0.15)' },
+BOOST:  { color: '#aa66cc', bg: 'rgba(170, 102, 204, 0.15)' },
+COOLDOWN:{ color: '#0099CC', bg: 'rgba(0, 153, 204, 0.15)' },
+ENERGY: { color: '#ff66b2', bg: 'rgba(255, 102, 178, 0.15)' },
+SHIELD: { color: '#00bfa5', bg: 'rgba(0, 191, 165, 0.15)' },
+VOID:   { color: '#2E2E2E', bg: 'rgba(46, 46, 46, 0.15)' }
 };
 
 export default function Overview({ selectedGuild }) {
