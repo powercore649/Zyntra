@@ -25,14 +25,6 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
     if (typeof setMobileMenuOpen === 'function') setMobileMenuOpen(false);
   };
 
-  // Effet ripple moderne
-  const handleClickEffect = (e) => {
-    const item = e.currentTarget;
-    item.classList.remove("clicked");
-    void item.offsetWidth;
-    item.classList.add("clicked");
-  };
-
   return (
     <nav className={`sidebar ${mobileMenuOpen ? 'mobile-open' : ''}`}>
       <div className="sidebar-header dashboard-sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -77,44 +69,26 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
 
       <div className="sidebar-section-label">Workspace</div>
       <ul className="nav-links">
-
-        <li className={activePage === 'overview' ? 'active' : ''} 
-            onClick={(e) => { handleClickEffect(e); setActivePage('overview'); closeMobileMenu(); }}>
+        <li className={activePage === 'overview' ? 'active' : ''} onClick={() => { setActivePage('overview'); closeMobileMenu(); }}>
           <i className="fa-solid fa-chart-pie"></i>
           <span>Overview</span>
         </li>
-
-        <li className={activePage === 'moderation' ? 'active' : ''} 
-            onClick={(e) => { handleClickEffect(e); setActivePage('moderation'); closeMobileMenu(); }}>
+        <li className={activePage === 'moderation' ? 'active' : ''} onClick={() => { setActivePage('moderation'); closeMobileMenu(); }}>
           <i className="fa-solid fa-gavel"></i>
           <span>Moderation</span>
         </li>
-
-        <li className={activePage === 'automod' ? 'active' : ''} 
-            onClick={(e) => { handleClickEffect(e); setActivePage('automod'); closeMobileMenu(); }}>
+        <li className={activePage === 'automod' ? 'active' : ''} onClick={() => { setActivePage('automod'); closeMobileMenu(); }}>
           <i className="fa-solid fa-shield-halved"></i>
           <span>Auto Moderation</span>
         </li>
-
-        <li className={activePage === 'commands' ? 'active' : ''} 
-            onClick={(e) => { handleClickEffect(e); setActivePage('commands'); closeMobileMenu(); }}>
+        <li className={activePage === 'commands' ? 'active' : ''} onClick={() => { setActivePage('commands'); closeMobileMenu(); }}>
           <i className="fa-solid fa-terminal"></i>
           <span>Command Center</span>
         </li>
-
-        <li className={activePage === 'docs' ? 'active' : ''} 
-            onClick={(e) => { handleClickEffect(e); setActivePage('docs'); closeMobileMenu(); }}>
-          <i className="fa-solid fa-book"></i>
+        <li className={activePage === 'docs' ? 'active' : ''} onClick={() => { setActivePage('docs'); closeMobileMenu(); }}>
+          <i className="fa-solid fa-book text-accent"></i>
           <span>Docs & Guides</span>
         </li>
-
-        {/* SECTION CHANGELOG */}
-        <li className={activePage === 'changelog' ? 'active' : ''} 
-            onClick={(e) => { handleClickEffect(e); setActivePage('changelog'); closeMobileMenu(); }}>
-          <i className="fa-solid fa-clock-rotate-left"></i>
-          <span>Changelog</span>
-        </li>
-
       </ul>
 
       <div className="sidebar-footer-note">
@@ -132,45 +106,6 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
           <span className="logout-btn" onClick={handleLogout}>Log out</span>
         </div>
       </div>
-
-      <style>{`
-        .nav-links li {
-          position: relative;
-          overflow: hidden;
-          cursor: pointer;
-          transition: background 0.25s ease, transform 0.15s ease;
-        }
-
-        .nav-links li:hover {
-          background: rgba(88, 101, 242, 0.12);
-          transform: translateX(4px);
-        }
-
-        .nav-links li.active {
-          background: linear-gradient(90deg, rgba(88,101,242,0.25), rgba(88,101,242,0.05));
-          border-left: 3px solid #5865F2;
-          padding-left: 17px;
-        }
-
-        /* Effet ripple */
-        .nav-links li::after {
-          content: "";
-          position: absolute;
-          width: 8px;
-          height: 8px;
-          background: rgba(88,101,242,0.5);
-          border-radius: 50%;
-          transform: scale(0);
-          opacity: 0;
-          pointer-events: none;
-          transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-
-        .nav-links li.clicked::after {
-          transform: scale(18);
-          opacity: 0;
-        }
-      `}</style>
     </nav>
   );
 }
