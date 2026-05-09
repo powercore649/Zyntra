@@ -1,85 +1,73 @@
-export function LoginEnhanced() {
-  const [remember, setRemember] = useState(true);
-  const [attempts, setAttempts] = useState(0);
-  const [lastLogin, setLastLogin] = useState(null);
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+export default function Login() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [status, setStatus] = useState(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem('zenith_token');
-    if (stored) {
-      setLastLogin(new Date().toLocaleString());
-    }
-  }, []);
+    const params = new URLSearchParams(location.search);
+    const token = params.get('token');
+    const error = params.get('error');
 
-  const handleLoginRedirect = () => {
-    setAttempts(a => a + 1);
-    if (remember) {
-      localStorage.setItem('zenith_remember', 'true');
+    if (token) {
+      localStorage.setItem('zenith_token', token);
+      localStorage.removeItem('zenith_guild_id');
+      setStatus({ type: 'success', text: 'Authentication successful! Redirecting...' });
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    } else if (error) {
+      setStatus({ type: 'error', text: `Authentication Failed: ${error}` });
     }
-    window.location.href = '/api/auth/login';
-  };
-
-  const clearSession = () => {
-    localStorage.removeItem('zenith_token');
-    localStorage.removeItem('zenith_guild_id');
-    setLastLogin(null);
-  };
+  }, [location, navigate]);
 
   return (
-    <div>
-      {/* your original login UI is untouched and used via route */}
-      <div style={{ marginTop: '15px', textAlign: 'center', color: '#aaa' }}>
-        <label>
-          <input
-            type="checkbox"
-            checked={remember}
-            onChange={() => setRemember(!remember)}
-            style={{ marginRight: '6px' }}
-          />
-          Remember me (because humans forget everything)
-        </label>
-      </div>
-
-      <div style={{ marginTop: '10px', textAlign: 'center' }}>
-        <button
-          onClick={handleLoginRedirect}
-          style={{
-            background: '#5865F2',
-            color: 'white',
-            padding: '8px 12px',
-            borderRadius: '6px',
-            border: 'none',
-            cursor: 'pointer'
-          }}
-        >
-          Retry Login
-        </button>
-      </div>
-
-      <div style={{ marginTop: '10px', fontSize: '12px', color: '#888', textAlign: 'center' }}>
-        Login attempts: {attempts}
-      </div>
-
-      {lastLogin && (
-        <div style={{ marginTop: '6px', fontSize: '12px', color: '#888', textAlign: 'center' }}>
-          Last session: {lastLogin}
+    <div className="login-body">
+      <div className="login-card glass-panel">
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '80px',
+          height: '80px',
+          margin: '0 auto 20px auto',
+          background: 'rgba(88, 101, 242, 0.1)',
+          border: '1px solid rgba(88, 101, 242, 0.3)',
+          borderRadius: '24px',
+          boxShadow: '0 0 30px rgba(88, 101, 242, 0.2)'
+        }}>
+          <span style={{ 
+            fontSize: '3.5rem', 
+            fontWeight: '900', 
+            fontFamily: "'Outfit', sans-serif",
+            lineHeight: 1,
+            background: 'linear-gradient(135deg, #00A8FC, #5865F2)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            filter: 'drop-shadow(0 0 10px rgba(88, 101, 242, 0.5))'
+          }}>
+            Z
+          </span>
         </div>
-      )}
-
-      <div style={{ marginTop: '10px', textAlign: 'center' }}>
-        <button
-          onClick={clearSession}
-          style={{
-            background: 'transparent',
-            border: '1px solid #444',
-            color: '#aaa',
-            padding: '6px 10px',
-            borderRadius: '6px',
-            cursor: 'pointer'
-          }}
-        >
-          Clear Session
-        </button>
+        <h2 className="brand-text-glow" style={{ margin: 0, paddingBottom: '5px' }}>ZENITH</h2>
+        <p>Premium Guild Management & Automation</p>
+        
+        {!status ? (
+          <a href="/api/auth/login" className="btn-discord" style={{ textDecoration: 'none' }}>
+            <i className="fa-brands fa-discord"></i> Login with Discord
+          </a>
+        ) : (
+          <div id="login-status">
+            <span style={{ color: status.type === 'success' ? '#4ADE80' : 'red' }}>
+              {status.type === 'error' && <i className="fa-solid fa-circle-exclamation" style={{ marginRight: '8px' }}></i>}
+              {status.text}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
 }
+
