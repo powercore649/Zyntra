@@ -25,11 +25,10 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
     if (typeof setMobileMenuOpen === 'function') setMobileMenuOpen(false);
   };
 
-  // Effet de clic moderne (ripple)
   const handleClickEffect = (e) => {
     const item = e.currentTarget;
     item.classList.remove("clicked");
-    void item.offsetWidth; 
+    void item.offsetWidth;
     item.classList.add("clicked");
   };
 
@@ -78,44 +77,35 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
       <div className="sidebar-section-label">Workspace</div>
       <ul className="nav-links">
 
-        <li 
-          className={activePage === 'overview' ? 'active' : ''} 
-          onClick={(e) => { handleClickEffect(e); setActivePage('overview'); closeMobileMenu(); }}
-        >
+        <li className={activePage === 'overview' ? 'active' : ''} onClick={(e) => { handleClickEffect(e); setActivePage('overview'); closeMobileMenu(); }}>
           <i className="fa-solid fa-chart-pie"></i>
           <span>Overview</span>
         </li>
 
-        <li 
-          className={activePage === 'moderation' ? 'active' : ''} 
-          onClick={(e) => { handleClickEffect(e); setActivePage('moderation'); closeMobileMenu(); }}
-        >
+        <li className={activePage === 'moderation' ? 'active' : ''} onClick={(e) => { handleClickEffect(e); setActivePage('moderation'); closeMobileMenu(); }}>
           <i className="fa-solid fa-gavel"></i>
           <span>Moderation</span>
         </li>
 
-        <li 
-          className={activePage === 'automod' ? 'active' : ''} 
-          onClick={(e) => { handleClickEffect(e); setActivePage('automod'); closeMobileMenu(); }}
-        >
+        <li className={activePage === 'automod' ? 'active' : ''} onClick={(e) => { handleClickEffect(e); setActivePage('automod'); closeMobileMenu(); }}>
           <i className="fa-solid fa-shield-halved"></i>
           <span>Auto Moderation</span>
         </li>
 
-        <li 
-          className={activePage === 'commands' ? 'active' : ''} 
-          onClick={(e) => { handleClickEffect(e); setActivePage('commands'); closeMobileMenu(); }}
-        >
+        <li className={activePage === 'commands' ? 'active' : ''} onClick={(e) => { handleClickEffect(e); setActivePage('commands'); closeMobileMenu(); }}>
           <i className="fa-solid fa-terminal"></i>
           <span>Command Center</span>
         </li>
 
-        <li 
-          className={activePage === 'docs' ? 'active' : ''} 
-          onClick={(e) => { handleClickEffect(e); setActivePage('docs'); closeMobileMenu(); }}
-        >
-          <i className="fa-solid fa-book text-accent"></i>
+        <li className={activePage === 'docs' ? 'active' : ''} onClick={(e) => { handleClickEffect(e); setActivePage('docs'); closeMobileMenu(); }}>
+          <i className="fa-solid fa-book"></i>
           <span>Docs & Guides</span>
+        </li>
+
+        {/* SECTION CHANGELOG */}
+        <li className={activePage === 'changelog' ? 'active' : ''} onClick={(e) => { handleClickEffect(e); setActivePage('changelog'); closeMobileMenu(); }}>
+          <i className="fa-solid fa-clock-rotate-left"></i>
+          <span>Changelog</span>
         </li>
 
       </ul>
@@ -136,7 +126,6 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
         </div>
       </div>
 
-      {/* Animation CSS */}
       <style>{`
         .nav-links li {
           position: relative;
