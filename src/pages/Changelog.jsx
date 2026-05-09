@@ -11,9 +11,9 @@ export default function Changelog() {
           <h2>v1.0.0</h2>
           <span className="changelog-date">2026-05-09</span>
           <ul>
-            <li>Initial release of the Changelog system</li>
-            <li>Added modern sidebar animations</li>
-            <li>Improved login loading effects</li>
+            <li>Added Changelog page</li>
+            <li>Improved sidebar animations</li>
+            <li>Enhanced login loading effects</li>
           </ul>
         </div>
       </div>
