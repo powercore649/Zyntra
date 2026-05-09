@@ -27,7 +27,7 @@ export default function Dashboard() {
         {activePage === 'automod' && <AutoMod />}
         {activePage === 'commands' && <Commands />}
         {activePage === 'docs' && <Docs />}
-        {activePage === 'changelog' && <Changelog />} 
+        {activePage === 'changelog' && <Changelog />}
       </div>
     </div>
   );
