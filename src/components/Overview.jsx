@@ -2,16 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 
 const ACTION_COLORS = {
-  INFO:   { color: '#33b5e5', bg: 'rgba(51, 181, 229, 0.15)' },
-SUCCESS:{ color: '#00C851', bg: 'rgba(0, 200, 81, 0.15)' },
-ERROR:  { color: '#ff4444', bg: 'rgba(255, 68, 68, 0.15)' },
-ALERT:  { color: '#ffbb33', bg: 'rgba(255, 187, 51, 0.15)' },
-NEUTRAL:{ color: '#888888', bg: 'rgba(136, 136, 136, 0.15)' },
-BOOST:  { color: '#aa66cc', bg: 'rgba(170, 102, 204, 0.15)' },
-COOLDOWN:{ color: '#0099CC', bg: 'rgba(0, 153, 204, 0.15)' },
-ENERGY: { color: '#ff66b2', bg: 'rgba(255, 102, 178, 0.15)' },
-SHIELD: { color: '#00bfa5', bg: 'rgba(0, 191, 165, 0.15)' },
-VOID:   { color: '#2E2E2E', bg: 'rgba(46, 46, 46, 0.15)' }
+ INFO:     { color: '#42a5f5', bg: 'rgba(66, 165, 245, 0.15)' },
+SUCCESS:  { color: '#66bb6a', bg: 'rgba(102, 187, 106, 0.15)' },
+ERROR:    { color: '#ef5350', bg: 'rgba(239, 83, 80, 0.15)' },
+ALERT:    { color: '#ffa726', bg: 'rgba(255, 167, 38, 0.15)' },
+NEUTRAL:  { color: '#bdbdbd', bg: 'rgba(189, 189, 189, 0.15)' },
+BOOST:    { color: '#ab47bc', bg: 'rgba(171, 71, 188, 0.15)' },
+COOLDOWN: { color: '#26c6da', bg: 'rgba(38, 198, 218, 0.15)' },
+ENERGY:   { color: '#ec407a', bg: 'rgba(236, 64, 122, 0.15)' },
+SHIELD:   { color: '#29b6f6', bg: 'rgba(41, 182, 246, 0.15)' },
+VOID:     { color: '#37474f', bg: 'rgba(55, 71, 79, 0.15)' }
+
 };
 
 export default function Overview({ selectedGuild }) {
