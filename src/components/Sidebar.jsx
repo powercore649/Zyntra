@@ -102,7 +102,6 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
           <span>Docs & Guides</span>
         </li>
 
-        {/* SECTION CHANGELOG */}
         <li className={activePage === 'changelog' ? 'active' : ''} onClick={(e) => { handleClickEffect(e); setActivePage('changelog'); closeMobileMenu(); }}>
           <i className="fa-solid fa-clock-rotate-left"></i>
           <span>Changelog</span>
